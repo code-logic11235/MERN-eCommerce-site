@@ -2,9 +2,9 @@
   "name": "mern-ecommerce-site",
   "version": "1.0.0",
   "description": "ecommerce site using MERN stack",
-  "main": "server.js",
+  "main": "./backend/server.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "nodemon backend/server.js",
     "dev": "NODE_ENV=DEVELOPMENT nodemon backend/server",
     "prod": "NODE_ENV=PRODUCTION nodemon backend/server"
 

@@ -7,6 +7,7 @@ exports.newProduct = async (req, res, next)=>{
   const product = await Product.create(req.body); // get data from the body and create a new product using the product model
   // have not delt with images yet. dealing with images later using cloudinary
   res.status(201).json({
+    message: 'created new product',
     success: true,
     product
   })
@@ -21,7 +22,7 @@ exports.getProducts = async (req, res, next)=>{
   })
 }
 
-//get single product details => /api/v1/product/ :id
+//get single product details => /api/v1/admin/product/ :id
 
 exports.getSingleProduct = async (req, res, next)=>{
   const product = await Product.findById(req.params.id);
@@ -39,10 +40,10 @@ exports.getSingleProduct = async (req, res, next)=>{
   })
 }
 
-//update product => /api/v1/product/ :id
+//update product => /api/v1/admin/product/ :id
 
 exports.updateProduct = async (req, res, next)=>{
-  let product = await Product.findById(req.params.id)
+  let product = await Product.findById(req.params.id);
   if(!product)  {
     return res.status(404).json({
       success: false,
@@ -57,5 +58,22 @@ exports.updateProduct = async (req, res, next)=>{
   res.status(200).json({
     success: true,
     product
+  })
+}
+
+//delete product => /api/v1/admin/product/:id
+
+exports.deleteProduct = async (req, res, next)=>{
+  let product = await Product.findById(req.params.id);
+  if(!product)  {
+    return res.status(404).json({
+      success: false,
+      message: 'Product not found'
+    })
+  }
+  await product.remove();
+  res.status(200).json({
+    success: true,
+    message: 'Product is deleted'
   })
 }

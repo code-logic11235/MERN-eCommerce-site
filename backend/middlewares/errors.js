@@ -13,8 +13,8 @@ module.exports = (err, req, res, next) =>{
     })
   }
   if(process.env.NODE_ENV === 'PRODUCTION') {
-    let error = {...err}
-    error.message = err.message
+    let error = { ...err };
+    error.message = err.message;
 
     // wrong mongoose object ID error 
     if (err.name === 'CastError') {
@@ -32,7 +32,7 @@ module.exports = (err, req, res, next) =>{
 
     res.status(error.statusCode).json({
       success: false,
-      message: err.message || 'Internal server Error'
+      message: error.message || 'Internal server Error'
     })
   }
 }

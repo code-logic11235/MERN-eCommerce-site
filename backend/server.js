@@ -3,6 +3,9 @@ const connectDatabase = require('./config/database.js')
 
 const dotenv = require('dotenv');
 
+const express = require('express')
+app.use(express.urlencoded({extended: true}));
+
 // handle unccaught excceptions 
 process.on('uncaughtException', err => {
   console.log(`ERROR: ${err.stack}`);

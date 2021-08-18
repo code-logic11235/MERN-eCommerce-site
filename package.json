@@ -8,7 +8,6 @@
     "dev": "NODE_ENV=DEVELOPMENT nodemon backend/server",
     "prod": "NODE_ENV=PRODUCTION nodemon backend/server",
     "seeder": "node backend/utils/seeder.js"
-
   },
   "repository": {
     "type": "git",
@@ -21,9 +20,14 @@
   },
   "homepage": "https://github.com/code-logic11235/MERN-eCommerce-site#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^5.13.4"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.4",
+    "nodemailer": "^6.6.3",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"

@@ -46,13 +46,19 @@ const userSchema = new mongoose.Schema({
 
 })
 
-
+//encrypting password before saving user
 userSchema.pre('save', async function (next){
   if(!this.isModified('password')) {
     next()
   }
-  this.password = await bcrypt.hash(this.password, 10)
+  // const salt = await bcrypt.genSalt(process.env.SALT_WORK_FACTOR);
+  this.password = await bcrypt.hash(this.password, 10);
 })
+
+//compare user password
+userSchema.methods.comparePassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password)
+}
 
 //return jason wrapped token (JWT)
 

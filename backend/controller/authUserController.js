@@ -45,13 +45,14 @@ exports.loginUser = catchAsyncErrors (async (req, res, next)=>{
   //meaning when querying password wont be in result unless we use the select method above
   const user = await User.findOne({email}).select('+password') 
   
+  
   if(!user) {
     return next(new ErrorHandler('invalid Email or Password', 401));
   }
 
   //checks if password is correct
   const isPasswordMatch = await user.comparePassword(password)
-
+  
   if(!isPasswordMatch) {
     return next(new ErrorHandler('invalid Email or Password', 401));
   }

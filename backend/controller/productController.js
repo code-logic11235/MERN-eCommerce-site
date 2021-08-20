@@ -6,6 +6,8 @@ const APIFeatures = require('../utils/apiFeatures')
 
 //create new product => /api/v1/product/new
 exports.newProduct = catchAsyncErrors ( async (req, res, next)=>{
+  
+    req.body.user = req.user.id;
 
     const product = await Product.create(req.body); // get data from the body and create a new product using the product model
     // have not delt with images yet. dealing with images later using cloudinary

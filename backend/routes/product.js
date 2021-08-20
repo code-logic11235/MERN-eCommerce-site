@@ -5,12 +5,12 @@ const {getProducts, newProduct, getSingleProduct, updateProduct, deleteProduct} 
 const {isAuthenticatedUser} = require('../middlewares/authUser');
 
 
-router.route('/products').get(isAuthenticatedUser,getProducts);
-router.route('/product/new').post(newProduct);
+router.route('/products').get(getProducts);
+router.route('/product/new').post(isAuthenticatedUser, newProduct);
 router.route('/admin/product/:id').get(getSingleProduct);
 
 router.route('/admin/product/:id')
-  .put(updateProduct)
-  .delete(deleteProduct);
+  .put(isAuthenticatedUser, updateProduct)
+  .delete(isAuthenticatedUser, deleteProduct);
 
 module.exports = router;

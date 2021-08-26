@@ -7,6 +7,8 @@ const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
 const { findOne } = require('../models/user');
 
+const jwt = require('jsonwebtoken');
+
 //register user =>/api/v1/register
 exports.registerUser = catchAsyncErrors (async (req, res, next)=>{
 
@@ -149,5 +151,16 @@ exports.logout = catchAsyncErrors( async (req, res, next)=>{
     success: true,
     message: "logged out"
 
+  })
+})
+
+//Get loged in user details 
+exports.getUserProfile = catchAsyncErrors( async (req, res, next)=>{
+
+  const user = await User.findById(req.user.id);
+
+  res.status(200).json({
+    success: true,
+    user
   })
 })

@@ -25,45 +25,7 @@ exports.registerUser = catchAsyncErrors (async (req, res, next)=>{
   sendToken(user, 200, res);
   
   })
-// Forgot Password      =>/api/v1/password/forgot
-  exports.forgotPassword = catchAsyncErrors (async (req, res, next) => {
-    
-    const user = await User.findOne({email: req.body.email});
-    
-    if(!user) {
-      return next(new ErrorHandler('Email not found', 404))
-    }
-
-    //get reset token 
-    const resetToken = user.getResetPasswordToken();
-
-    await user.save({validateBeforeSave: false});
-
-    //create reset password URL 
-    const resetURL = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`
-
-    const message = `your password reset token is: \n \n ${resetURL} \n \n If you have not requested this email, then please ignore it.`
-
-    try {
-      await sendEmail({
-        email: user.email,
-        subject: 'Ecommerce site password recovery',
-        message
-      })
-      res.status(200).json({
-        success: true,
-        message: `Email sent to: ${user.email}`
-      })
-
-    }catch(error){
-      user.resetPasswordToken = undefined;
-      user.resetPasswordExpire = undefined;
-
-      await user.save({validateBeforeSave: false});
-
-      return next(new ErrorHandler(error.message, 404))
-    }
-  })
+  
 
 //login user =>/api/v1/login
 
@@ -98,11 +60,54 @@ exports.loginUser = catchAsyncErrors (async (req, res, next)=>{
     
 })
 
+// Forgot Password      =>/api/v1/password/forgot
+exports.forgotPassword = catchAsyncErrors (async (req, res, next) => {
+    
+  const user = await User.findOne({email: req.body.email});
+  
+  if(!user) {
+    return next(new ErrorHandler('Email not found', 404))
+  }
+
+  //get reset token 
+  const resetToken = user.getResetPasswordToken();
+
+  await user.save({validateBeforeSave: false});
+
+
+
+  //create reset password URL 
+  // req.protocol ask if http or https
+  const resetURL = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`
+
+  const message = `your password reset token is: \n \n ${resetURL} \n \n If you have not requested this email, then please ignore it.`
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: 'Ecommerce site password recovery',
+      message
+    })
+    res.status(200).json({
+      success: true,
+      message: `Email sent to: ${user.email}`
+    })
+
+  }catch(error){
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+
+    await user.save({validateBeforeSave: false});
+    return next(new ErrorHandler(error.message, 404))
+  }
+})
+
 // reset password => /api/v1/password/reset/:token
 exports.resetPassword = catchAsyncErrors( async (req, res, next)=>{
 
 
     //hash the token from the url
+    // because the token saved is already hash so we need to has to compare/lookup
     const resetPasswordToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
 
     const user = await User.findOne({

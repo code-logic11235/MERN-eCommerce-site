@@ -109,7 +109,7 @@ exports.resetPassword = catchAsyncErrors( async (req, res, next)=>{
 
 
     //hash the token from the url
-    // because the token saved is already hash so we need to has to compare/lookup
+    // because the token saved is already hash so we need to hash to compare/lookup
     const resetPasswordToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
 
     const user = await User.findOne({
@@ -136,6 +136,21 @@ exports.resetPassword = catchAsyncErrors( async (req, res, next)=>{
 
 
 
+})
+
+// update/change password
+exports.updatePassword = catchAsyncErrors (async (req, res, next) =>{
+  const user = await User.findById(req.user.id).select('+password');
+
+  // check old password is a match
+  const isMatched = await user.comparePassword(req.body.oldPassword);
+  if(!isMatched){
+    return next(new ErrorHandler('old password is incorrect'), 400);
+  }
+  user.password = req.body.password;
+  await user.save();
+
+  sendToken(user, 200, res);
 })
 
 

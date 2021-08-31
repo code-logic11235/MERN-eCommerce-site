@@ -241,10 +241,6 @@ exports.updateUser = catchAsyncErrors(async (req, res, next) =>{
     role: req.body.role
   }
 
-  console.log(newUserData)
-
-
-
   const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,
@@ -255,4 +251,23 @@ exports.updateUser = catchAsyncErrors(async (req, res, next) =>{
 
   })
 
+})
+
+
+//delete user  => /api/v1/admin/users/:id
+exports.deleteUser = catchAsyncErrors (async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if(!user) {
+    return next(new ErrorHandler(`ID ${req.params.id} not found `), 400);
+  }
+  
+  //TODO: remove avitar from cloudinary also
+
+  await user.remove();
+
+
+  res.status(200).json({
+    success: true,
+  })
 })

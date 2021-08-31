@@ -202,3 +202,17 @@ exports.getUserProfile = catchAsyncErrors( async (req, res, next)=>{
     user
   })
 })
+
+// ADMIN routes 
+
+
+//get all user => /api/v1/admin/users 
+
+exports.getAllUsers = catchAsyncErrors (async (req, res, next) => {
+  const users = await User.find();
+
+  res.status(200).json({
+    success: true,
+    users
+  })
+})

@@ -21,7 +21,7 @@ const orderSchema = mongoose.Schema ({
     country: {
       type: String,
       required: true
-    },
+    }
 
   },
   user: {
@@ -100,4 +100,4 @@ const orderSchema = mongoose.Schema ({
   }
 })
 
-module.exports = mongoose.model('order', orderSchema);
+module.exports = mongoose.model('Order', orderSchema);

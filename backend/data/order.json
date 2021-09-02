@@ -15,8 +15,8 @@
 	"shippingInfo" : {
 		"address" : "3951  Smith Street",
 		"city" : "New York",
-		"phoneNo" : 5555551234,
-		"postalCode" : 10001,
+		"phoneNumber" : 5555551234,
+		"zipCode" : 10001,
 		"country" : "United States"
 	},
 	"paymentInfo" : {

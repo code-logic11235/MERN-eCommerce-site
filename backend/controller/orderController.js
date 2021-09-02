@@ -39,7 +39,7 @@ exports.newOrder = catchAsyncErrors( async (req, res, next) => {
 
 //Get single order    =>   /api/v1/order/:id
 exports.getSingleOrderByID = catchAsyncErrors( async (req, res, next) => {
-  console.log('hello1')
+
   const order = await Order.findById(req.params.id).populate('user', 'name email');
 
   if(!order) {
@@ -55,12 +55,29 @@ exports.getSingleOrderByID = catchAsyncErrors( async (req, res, next) => {
 
 //Get logged in user orders   =>   /api/v1/orders/me
 exports.myOrders = catchAsyncErrors( async (req, res, next) => {
-  console.log('hello')
-  console.log(req.user.id)
+
   const orders = await Order.find({user: req.user.id})
 
   res.status(200).json({
     success: true,
+    orders
+  })
+})
+
+//Get ALL orders   =>   /api/v1/admin/orders
+exports.allOrder = catchAsyncErrors( async (req, res, next) => {
+
+  const orders = await Order.find()
+
+  let totalAmount = 0;
+
+  orders.forEach(order =>{
+    totalAmount += order.totalPrice
+  })
+
+  res.status(200).json({
+    success: true,
+    totalAmount,
     orders
   })
 })

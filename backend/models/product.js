@@ -68,7 +68,11 @@ const productSchema = new mongoose.Schema({
     default: 0 
   },
   reviews: [{
-    //need user but dont have user model yet so we use naem
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: true
+    },
     name: {
       type: String,
       required: true

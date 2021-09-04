@@ -86,9 +86,9 @@ exports.allOrder = catchAsyncErrors( async (req, res, next) => {
 //update / process order   =>   /api/v1/admin/order/:id
 exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
 
-
+  // make sure your productID inside order is matching or you get error
   const order = await Order.findById(req.params.id)
-
+// console.log(order)
   if(order.orderStatus === 'Delivered') {
     return next (new ErrorHandler('Order has been delivered', 400))
   }
@@ -108,11 +108,9 @@ exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
 })
 
 async function updateStock(id, quantity){
-  console.log(id)
+
   const product = await Product.findById(id);
-  console.log(quantity)
-  console.log('-------------')
-  console.log(product)
+
 
   product.stock = product.stock - quantity;
 

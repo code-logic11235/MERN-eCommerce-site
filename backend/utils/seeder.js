@@ -12,10 +12,10 @@ connectDatabase();
 
 const seedProducts = async ()=>{
   try {
-    await Product.deleteMany();
-    console.log('products are deleted');
+    // await Product.deleteMany();
+    // console.log('products are deleted');
 
-    await Product.insertMany(Products);
+    await Product.create(Products);
     console.log('All products are added');
 
     process.exit();

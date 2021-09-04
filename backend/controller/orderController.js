@@ -3,6 +3,7 @@ const Product = require('../models/product');
 
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
+const order = require('../models/order');
 
 
 
@@ -68,7 +69,6 @@ exports.myOrders = catchAsyncErrors( async (req, res, next) => {
 exports.allOrder = catchAsyncErrors( async (req, res, next) => {
 
   const orders = await Order.find()
-
   let totalAmount = 0;
 
   orders.forEach(order =>{
@@ -81,3 +81,40 @@ exports.allOrder = catchAsyncErrors( async (req, res, next) => {
     orders
   })
 })
+
+
+//update / process order   =>   /api/v1/admin/order/:id
+exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
+
+
+  const order = await Order.findById(req.params.id)
+
+  if(order.orderStatus === 'Delivered') {
+    return next (new ErrorHandler('Order has been delivered', 400))
+  }
+
+  order.orderItems.forEach( async item =>{
+    await updateStock(item.product, item.quantity);
+  })
+
+  order.orderStatus = req.body.orderStatus;
+  order.deliveredAt = Date.now();
+
+  await order.save()
+
+  res.status(200).json({
+    success: true,
+  })
+})
+
+async function updateStock(id, quantity){
+  console.log(id)
+  const product = await Product.findById(id);
+  console.log(quantity)
+  console.log('-------------')
+  console.log(product)
+
+  product.stock = product.stock - quantity;
+
+  await product.save({validateBeforeSave: false});
+}

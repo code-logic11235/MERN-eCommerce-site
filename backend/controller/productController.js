@@ -135,6 +135,7 @@ exports.createProductReview = catchAsyncErrors ( async (req, res, next)=>{
   } else {
     //create review
     product.reviews.push(review);
+    product.numOfReviews += 1;
     product.numberOfReviews = product.reviews.length
   }
 

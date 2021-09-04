@@ -88,7 +88,7 @@ exports.updateOrder = catchAsyncErrors( async (req, res, next) => {
 
   // make sure your productID inside order is matching or you get error
   const order = await Order.findById(req.params.id)
-// console.log(order)
+
   if(order.orderStatus === 'Delivered') {
     return next (new ErrorHandler('Order has been delivered', 400))
   }
@@ -116,3 +116,21 @@ async function updateStock(id, quantity){
 
   await product.save({validateBeforeSave: false});
 }
+
+
+//delete order   =>   /api/v1/admin/order/:id
+exports.deleteOrder = catchAsyncErrors( async (req, res, next) => {
+
+  
+  const order = await Order.findById(req.params.id)
+
+  if(!order) {
+    return next (new ErrorHandler('order ID not found', 404))
+  }
+
+  await order.remove()
+
+  res.status(200).json({
+    success: true,
+  })
+})

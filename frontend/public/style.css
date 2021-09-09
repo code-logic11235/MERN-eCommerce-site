@@ -1,0 +1,83 @@
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.navbar{
+  display: flex;
+}
+.btn{
+  cursor: pointer;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+#search_field{
+  height: 2em;
+  /* justify-content: center; */
+  align-items: center;
+}
+#shopping_cart{
+  color: white;
+}
+
+
+.search {
+  display: flex;
+  width: 50%;
+  /* max-width: 1250px; */
+  /* margin: 0 auto;
+  padding: 0 25px; */
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container{
+  background-color: #ffffff;
+  height: 35px;
+  border-radius: 5px;
+  border: 2px solid #222328;
+  display: flex;
+  overflow: hidden;
+
+}
+.input-container{
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  
+}
+.input-container input{
+  /* width: 100%; */ 
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  margin-left: 20px;
+}
+.input-container i {
+  font-size: 20px;
+  margin-left: 25px;
+
+}
+
+.button-container {
+  background: #3060FF;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.button-container:hover {
+  background: #5a81ff;
+}

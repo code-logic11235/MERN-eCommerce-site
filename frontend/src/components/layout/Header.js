@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Header = () => {
   return (
@@ -6,28 +6,31 @@ const Header = () => {
 
       <div className='logo-container'>
         <div className='logo'>
-          <i className="material-icons " id= 'logo'>style</i> 
+          {/* <i className="material-icons " id= 'logo'>style</i>  */}
         </div>
         <h1 >LocalCommerce</h1>
       </div>
 
-      <div class="search">
-    <div class="search-container">
-      <div class = 'input-container'>
-        {/* <i class = 'fas fa-search'> </i> */}
-        <input type = 'text' id = 'search_product'
-          name = 'search_product'
-          placeholder="Search for Product..."/>
-      </div>
+    
+    <div className="search-container">
+        <div className = 'input-container'>
 
-      <div class = 'button-container'>
-          <i class = 'fas fa-search'> </i>
+          <input type = 'text' id = 'search_product'
+            name = 'search_product'
+            placeholder="Search for Product..."/>
+        </div>
+
+        <div className = 'button-container'>
+            <i className = 'fas fa-search'> </i>
+        </div>
       </div>
+    <div className='nav-tools'>
+      
+      <div className= 'nav-sign-in'> Hello, Sign in 
+      <br/>
+      <span id='your-account'> Your Account</span> </div>
+      <i className='fas fa-shopping-cart'> 2 </i>
     </div>
-  </div>
-
-      {/* <button className="btn" id="login_btn">Login</button>
-      <i class="material-icons-outlined">shopping_cart</i> */}
     </div>
   )
 

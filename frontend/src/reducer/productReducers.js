@@ -9,7 +9,7 @@ export const productsReducer = (
     state = {
       products: []
     },
-    action => {
+    action) => {
       switch(action.type) {
         
         case ALL_PRODUCTS_REQUEST: 
@@ -40,4 +40,4 @@ export const productsReducer = (
         default: 
           return state;
       }
-    })
+    }

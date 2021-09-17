@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 
 import MetaData from './layout/MetaData';
 import Product from './product/Product';
+import Loader from './layout/Loader';
 
 import {useDispatch, useSelector} from 'react-redux';
 import { getProduct } from '../action/productActions';
@@ -20,12 +21,10 @@ const Home = () => {
 
   return (
     <>
-    {loading? <h1> LOADING....</h1>: 
+    {loading ?  <Loader/>: 
     <>
     <MetaData title = {'Best Product ever!'}/>
       <h1 id="products_heading">Latest Products</h1>
-      
-
         <div className="latest-product-container">
           {products && products.map(product => (
 

@@ -4,34 +4,39 @@ const Header = () => {
   return (
     <div className = 'navbar'>
 
-      <div className='logo-container'>
-        <div className='logo'>
-          {/* <i className="material-icons " id= 'logo'>style</i>  */}
-        </div>
-        <h1 >LocalCommerce</h1>
-      </div>
-
     
-    <div className="search-container">
-        <div className = 'input-container'>
-
-          <input type = 'text' id = 'search_product'
-            name = 'search_product'
-            placeholder="Search for Product..."/>
+      <div className = 'navbar-container'>
+        <div className='logo-container'>
+          <div className='logo'>
+            {/* <i className="material-icons " id= 'logo'>style</i>  */}
+          </div>
+          <span >LocalCommerce</span>
         </div>
 
-        <div className = 'button-container'>
-            <i className = 'fas fa-search'> </i>
+      
+        <div className="search-container">
+          <div className = 'input-container'>
+
+            <input type = 'text' id = 'search_product'
+              name = 'search_product'
+              placeholder="Search for Product..."/>
+          </div>
+
+          <div className = 'button-container'>
+              <i className = 'fas fa-search'> </i>
+          </div>
+        </div>
+        <div className='nav-tools'>
+          
+          <div className= 'nav-sign-in'> Hello, Sign in 
+            <br/>
+            <span id='your-account'> Your Account</span> 
+          </div>
+            <i className='fas fa-shopping-cart'> 2 </i>
         </div>
       </div>
-    <div className='nav-tools'>
-      
-      <div className= 'nav-sign-in'> Hello, Sign in 
-      <br/>
-      <span id='your-account'> Your Account</span> </div>
-      <i className='fas fa-shopping-cart'> 2 </i>
     </div>
-    </div>
+    
   )
 
   // return (

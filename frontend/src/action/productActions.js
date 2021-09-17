@@ -9,6 +9,16 @@ import {
 
 export const getProduct = () => async (dispatch) => {
   try {
+    dispatch({
+      type: ALL_PRODUCTS_REQUEST
+    })
+
+    const {data} = await axios.get('/api/v1/products');
+
+    dispatch({
+      type: ALL_PRODUCTS_SUCCESS,
+      payload: data
+    })
     
   }catch (error) {
     dispatch ({
@@ -16,4 +26,12 @@ export const getProduct = () => async (dispatch) => {
       payload: error.response.data.message
     })
   }
+}
+
+//Clear error 
+
+export const clearErrors = () => async (dispatch) =>{
+  dispatch({
+    type: CLEAR_ERRORS
+  })
 }

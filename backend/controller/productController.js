@@ -23,7 +23,8 @@ exports.newProduct = catchAsyncErrors ( async (req, res, next)=>{
 
 exports.getProducts = catchAsyncErrors (async (req, res, next)=>{
 
-    const resultPerPage = 4;
+ 
+    const resultPerPage = 8;
     const productsCount = await Product.countDocuments();
 
     const apiFeatures = new APIFeatures(Product.find(), req.query)
@@ -33,14 +34,14 @@ exports.getProducts = catchAsyncErrors (async (req, res, next)=>{
 
     const products = await apiFeatures.query;
 
-    setTimeout(()=>{    // for 'wait animation'
+    setTimeout(()=>{  
       res.status(200).json({
             success: true,
             count: products.length,
             productsCount,
             products
           })
-    },1000)
+    },2500)
     
   }
 )

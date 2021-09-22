@@ -3,10 +3,13 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 import { productsReducer, productDetailsReducer } from "./reducer/productReducers";
-
+import { modalReducer } from "./reducer/modalReducer";
 const reducer = combineReducers ({
   products: productsReducer,
-  productDetails: productDetailsReducer
+  productDetails: productDetailsReducer,
+  modal: modalReducer
+
+
 
 })
 

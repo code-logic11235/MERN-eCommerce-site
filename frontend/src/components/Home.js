@@ -6,6 +6,7 @@ import Loader from './layout/Loader';
 
 import {useDispatch, useSelector} from 'react-redux';
 import { getProduct } from '../action/productActions';
+import {hideModal} from '../action/modalActions';
 
 import { useAlert } from 'react-alert';
 
@@ -22,7 +23,7 @@ const Home = () => {
       return alert.error(error)
     }
     dispatch(getProduct());
-
+    // dispatch(hideModal());
   }, [dispatch, alert, error])
 
   return (

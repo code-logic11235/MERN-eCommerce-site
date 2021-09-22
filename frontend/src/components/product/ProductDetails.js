@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Loader from '../layout/Loader'
 import ReviewProductModal from './ReviewProductModal';
 
 import {useDispatch, useSelector} from 'react-redux';
-import { getProduct } from '../../action/productActions'
+import { getProduct } from '../../action/productActions';
+import { showModal, hideModal } from '../../action/modalActions';
 
 
 const ProductDetails = () => {
@@ -11,6 +12,17 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const {loading} = useSelector(state=> state.products);
+
+  const {modal} = useSelector(state=> state.modal);
+
+  function onClick () {
+    dispatch(showModal());
+
+  }
+
+  useEffect(() => {
+    dispatch(hideModal());
+  }, [])
 
   return (
     <>
@@ -64,10 +76,10 @@ const ProductDetails = () => {
 
                 <p id="product_seller mb-3">Sold by: <strong>Amazon</strong></p>
 				
-                <button id="review_btn" type="button" className="btn btn-primary mt-4">
+                <button id="review_btn" type="button" className="btn btn-primary mt-4" onClick = {onClick}>
                               Submit Your Review
                 </button>
-
+                {modal ? <ReviewProductModal/> : null}
                 
 
             </div>

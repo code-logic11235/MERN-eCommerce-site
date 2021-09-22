@@ -1,6 +1,6 @@
 import React from 'react'
 import Loader from '../layout/Loader'
-
+import ReviewProductModal from './ReviewProductModal';
 
 import {useDispatch, useSelector} from 'react-redux';
 import { getProduct } from '../../action/productActions'
@@ -64,13 +64,21 @@ const ProductDetails = () => {
 
                 <p id="product_seller mb-3">Sold by: <strong>Amazon</strong></p>
 				
-				<button id="review_btn" type="button" className="btn btn-primary mt-4" data-toggle="modal" data-target="#ratingModal">
-                            Submit Your Review
+                <button id="review_btn" type="button" className="btn btn-primary mt-4">
+                              Submit Your Review
                 </button>
+
+                
+
             </div>
 
           </div>    
 
+          
+
+          
+          
+                        
                     
         </> }
   

@@ -34,6 +34,8 @@ const ProductDetails = () => {
             </div>
 
             <div className = 'right-side'>
+              <div className = 'right-container'>
+
               <div className = 'product_name'>
                 <h3>onn. 32” Class HD (720P) LED Roku Smart TV (100012589)</h3>
                 <p id="product_id">Product # sklfjdk35fsdf5090</p>
@@ -83,6 +85,7 @@ const ProductDetails = () => {
                 
 
             </div>
+              </div>
 
           </div>    
 

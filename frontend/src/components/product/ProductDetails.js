@@ -34,7 +34,7 @@ const ProductDetails = ({match}) => {
   }
   return (
     <>
-    <MetaData title = {'actual product'}/>
+    <MetaData title = {product.name}/>
       {loading ? <Loader /> : 
         <>
           <div className = 'product-details-container'>

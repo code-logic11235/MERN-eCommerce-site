@@ -125,6 +125,7 @@ body, html {
 .footer p{
   text-align: center;
   color:darkgray;
+  padding: 4rem 0 0 0;
 }
 
 
@@ -410,4 +411,45 @@ margin: 1.3rem 0 2rem 0;
 .rate-product{
   cursor: pointer;
   
+}
+
+                              /* pagination */
+
+.pagination{
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 4rem 0 4rem 0;
+
+
+  
+}
+.pagination  li{
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  margin: .6rem .8rem .6rem .8rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  
+
+}
+.pagination li:hover{
+  transform: scale(1.2);
+  background-color: rgb(245, 245, 245);
+}
+
+.pagination .active {
+  background-color: #fa9c23 !important; 
+  color: white;
+  transform: none !important;
+  font-size: 1.2rem;
+}
+.pagination .active a:-webkit-any-link{
+  color: white;
+}
+.pagination a:-webkit-any-link{
+  text-decoration: none;
+  color: #fa9c23;
 }

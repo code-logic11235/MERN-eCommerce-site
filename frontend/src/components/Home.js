@@ -45,7 +45,7 @@ const Home = () => {
           ))}
         </div>
  
-        <div className = 'pagination'>
+        {/* <div className = 'pagination'> */}
             <Pagination
               activePage={currentPage}
               itemsCountPerPage={resultsPerPage}
@@ -58,7 +58,7 @@ const Home = () => {
               itemClass='page-item'
               linkClass='page-link'
             />
-        </div>
+        {/* </div> */}
 
 
     </> 

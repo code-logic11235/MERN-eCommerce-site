@@ -5,14 +5,20 @@ body, html {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
-  width: 100%;
-  min-width: 370px;
+  /* overflow-x: hidden; */
+  /* min-width: 370px; */
+}
+
+.app{
+  /* width: 100vw; */
+  overflow-x: inherit;
 }
 
                                                       /* navbar  */
 .navbar{
   display: inline-block;
   color: white;
+  width: 100%;
 
 }
 .navbar-container{
@@ -130,14 +136,16 @@ body, html {
 
 
                                       /* latest product */
+.homepage-container{
+  /* width: 100vw; */
+  margin: 0 1.5rem 0 1.5rem ;
+}
 .latest-product-container{
   display: grid;
   gap: 12px;
-  /* flex-grow: 1; */
-  grid-template-columns: repeat(4, 1fr);
-
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr) );
   background: #ffffff;
-
+  margin: 0 .5rem 0 .5rem ;
 }
 
 @media screen and (max-width: 900px) {
@@ -160,8 +168,7 @@ body, html {
   }
 }
 .product-tile{
-  /* overflow:none; */
-  background:whitesmoke;
+
   border-radius: 10px;
   cursor: pointer;
   display: flex;
@@ -170,7 +177,9 @@ body, html {
   color: white;
   padding: 10px;
   transition: transform .1s;
+  border: 1px solid rgb(219, 219, 219) ;
 }
+
 
 .product-tile:hover{
   transform: scale(1.02);
@@ -420,15 +429,16 @@ margin: 1.3rem 0 2rem 0;
   list-style: none;
   justify-content: center;
   margin: 4rem 0 4rem 0;
-
+  padding-left: 0;
 
   
 }
 .pagination  li{
+  
   display: flex;
   width: 2rem;
   height: 2rem;
-  margin: .6rem .8rem .6rem .8rem;
+  margin: .6rem .7rem .6rem .7rem;
   justify-content: center;
   align-items: center;
   cursor: pointer;

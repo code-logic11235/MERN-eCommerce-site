@@ -1,4 +1,6 @@
 import React from 'react';
+import { Search } from './Search';
+import { Route } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -13,7 +15,7 @@ const Header = () => {
           <span >LocalCommerce</span>
         </div>
 
-      
+{/*       
         <div className="search-container">
           <div className = 'input-container'>
 
@@ -25,7 +27,9 @@ const Header = () => {
           <div className = 'button-container'>
               <i className = 'fas fa-search'> </i>
           </div>
-        </div>
+        </div> */}
+        <Route render={({history})=><Search history ={history}/>}/>
+
         <div className='nav-tools'>
           
           <div className= 'nav-sign-in'> Hello, Sign in 

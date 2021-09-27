@@ -90,14 +90,16 @@ body, html {
 .button-container {
   color: black;
   background: #febd69;
-  width: 50px;
+  /* width: 50px; */
   display: flex;
   justify-content: center;
   align-items: center; 
   cursor: pointer;
   transition: .3s ease;
 }
-
+.button-container i {
+padding: 25px;
+}
 .button-container:hover {
   background: #fdb04b;
 }

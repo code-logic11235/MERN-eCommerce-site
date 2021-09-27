@@ -18,17 +18,16 @@ const Home = ({match}) => {
   const alert = useAlert();
 
   const dispatch = useDispatch();
-  const {loading, products, error, productsCount, resultsPerPage} = useSelector(state=> state.products)
-
-  const keyword = match.params.keyword
+  const {loading, products, error, countTotal, resultsPerPage} = useSelector(state=> state.products)
+  const searchkeyword = match.params.keyword
 
 
   useEffect(() => {
     if(error) {
       return alert.error(error)
     }
-    dispatch(getProduct(keyword ,currentPage));
-  }, [dispatch, alert, error, keyword, currentPage])
+    dispatch(getProduct(searchkeyword ,currentPage));
+  }, [dispatch, alert, error, searchkeyword, currentPage])
 
   function setCurrentPageNo(pageNumber){
     setCurrentPage(pageNumber)
@@ -52,7 +51,7 @@ const Home = ({match}) => {
             <Pagination
               activePage={currentPage}
               itemsCountPerPage={resultsPerPage}
-              totalItemsCount={productsCount}
+              totalItemsCount={countTotal}
               onChange={setCurrentPageNo}
               nextPageText={"Next"}
               prevPageText={"Prev"}

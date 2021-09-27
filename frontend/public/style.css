@@ -471,3 +471,58 @@ margin: 1.3rem 0 2rem 0;
   text-decoration: none;
   color: #fa9c23;
 }
+                                          /* filter */
+.filter-product form {
+  display: flex;
+}
+.price-range{
+  display: flex;
+}
+
+.filter-product input[type=text]{
+  border: 1px solid #888C8C;
+  border-left: none;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 
+  inset 0px 10px 4px -10px #CCC,
+  inset 0px -10px 4px -10px #CCC; 
+  height: 40px;
+  font-size: 1.2rem;
+  width: 65px;
+}
+.filter-product input:focus{
+  outline: none;
+}
+.filter-product span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px 0 0 3px;
+  box-shadow: 
+  inset 0px 10px 4px -10px #CCC,
+  inset 0px -10px 4px -10px #CCC; 
+  height: 40px;
+  border: 1px solid #888C8C;
+  border-right: none;
+  padding-left: 8px;
+  font-size: 1.3rem;
+
+}
+.price-range {
+  margin-right: 8px;
+}
+.filter-product button {
+  background-color: transparent;
+  border: 1px solid #888C8C;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 1px 2px rgb(15 17 17 / 15%) inset;
+  width: 40px;
+  margin-left: 4px;
+}
+.filter-product button:hover{
+  background-color: #f0f0f0;
+}
+.filter-product button:focus{
+  background-color: #febd69;
+}

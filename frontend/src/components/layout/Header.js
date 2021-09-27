@@ -1,6 +1,7 @@
 import React from 'react';
 import { Search } from './Search';
 import { Route } from 'react-router-dom';
+import { Logo } from './Logo';
 
 const Header = () => {
   return (
@@ -8,13 +9,8 @@ const Header = () => {
 
     
       <div className = 'navbar-container'>
-        <div className='logo-container'>
-          <div className='logo'>
-            {/* <i className="material-icons " id= 'logo'>style</i>  */}
-          </div>
-          <span >LocalCommerce</span>
-        </div>
 
+        <Route render={({history})=><Logo history ={history}/>}/>
         <Route render={({history})=><Search history ={history}/>}/>
 
         <div className='nav-tools'>

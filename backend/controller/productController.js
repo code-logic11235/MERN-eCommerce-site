@@ -40,7 +40,7 @@ exports.getProducts = catchAsyncErrors (async (req, res, next)=>{
 
       apiFeatures.pagination(resultsPerPage)
     } 
-    console.log(countTotal)
+
 
      products = await apiFeatures.query;
 

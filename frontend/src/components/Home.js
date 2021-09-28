@@ -5,7 +5,9 @@ import Pagination  from 'react-js-pagination';
 import MetaData from './layout/MetaData';
 import Product from './product/Product';
 import Loader from './layout/Loader';
-import FilterByPrice from './productFilters/FilterByPrice';
+
+
+import SearchPage from './SearchPage';
 
 import {useDispatch, useSelector} from 'react-redux';
 import { getProduct } from '../action/productActions';
@@ -29,7 +31,6 @@ const Home = ({match}) => {
   const {loading, products, error, countTotal, resultsPerPage} = useSelector(state=> state.products) //pulling state from redux
   const searchkeyword = match.params.keyword //params from searchbar
 
-  console.log(countTotal)
 
   useEffect(() => {
     if(error) {
@@ -49,40 +50,41 @@ const Home = ({match}) => {
     {loading ?  <Loader/>: 
     <>
     <MetaData title = {'Best Product ever!'}/>
-      <h1 id="products_heading">Latest Products</h1>
-  
-        <div className="latest-product-container">
-        {searchkeyword? (
-            <>
-              <FilterByPrice setPriceMin = {setPriceMin} setPriceMax = {setPriceMax} filterByPrice = {filterByPrice}/>
-              <div >
+      {searchkeyword? (
+          <SearchPage products = {products} 
+          searchkeyword = {searchkeyword} 
+          countTotal={countTotal} 
+          filterByPrice= {filterByPrice} 
+          setPriceMin = {setPriceMin}
+          setPriceMax = {setPriceMax}/>
+        ): (
+          <>
+            <h1 id="products_heading">Latest Products</h1>
+            <div className="latest-product-container"> 
+              {
+                products && products.map(product => (
+                  <Product key = {product._id} product = {product}/>
+                )) 
+              }
+            </div>
+          </>
+            
+        )}
 
-                  {products && products.map(product => (
-              <Product key = {product._id} product = {product}/>
-             )) }
-              </div>
-            </>
-          ): (
-            products && products.map(product => (
-              <Product key = {product._id} product = {product}/>
-             )) 
-          )}
 
-        </div>
- 
 
-            <Pagination
-              activePage={currentPage}
-              itemsCountPerPage={resultsPerPage}
-              totalItemsCount={countTotal}
-              onChange={setCurrentPageNo}
-              nextPageText={"Next"}
-              prevPageText={"Prev"}
-              firstPageText={'First'}
-              lastPageText={'last'}
-              itemClass='page-item'
-              linkClass='page-link'
-            />
+          <Pagination
+            activePage={currentPage}
+            itemsCountPerPage={resultsPerPage}
+            totalItemsCount={countTotal}
+            onChange={setCurrentPageNo}
+            nextPageText={"Next"}
+            prevPageText={"Prev"}
+            firstPageText={'First'}
+            lastPageText={'last'}
+            itemClass='page-item'
+            linkClass='page-link'
+          />
         {/* </div> */}
 
 

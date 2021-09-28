@@ -5,12 +5,14 @@ import Pagination  from 'react-js-pagination';
 import MetaData from './layout/MetaData';
 import Product from './product/Product';
 import Loader from './layout/Loader';
+import FilterByPrice from './productFilters/FilterByPrice';
 
 import {useDispatch, useSelector} from 'react-redux';
 import { getProduct } from '../action/productActions';
 
 
 import { useAlert } from 'react-alert';
+
 
 
 
@@ -27,7 +29,7 @@ const Home = ({match}) => {
   const {loading, products, error, countTotal, resultsPerPage} = useSelector(state=> state.products) //pulling state from redux
   const searchkeyword = match.params.keyword //params from searchbar
 
-  
+  console.log(countTotal)
 
   useEffect(() => {
     if(error) {
@@ -52,36 +54,9 @@ const Home = ({match}) => {
         <div className="latest-product-container">
         {searchkeyword? (
             <>
-              <div className = 'filter-product'>
-                <div className = 'filter-price'>
-                  <form onSubmit = {filterByPrice}>
-                    <div className = 'price-range low-price '> 
-                      <span>$</span>
-                      <input 
-                        type= 'text' 
-                        placeholder= 'Min' 
-                        onChange = {(e)=>{
-                            setPriceMin(e.target.value)
-                        }}
-                      />
-
-                    </div>
-                    <div className = 'price-range high-price'> 
-                      <span>$</span>
-                      <input 
-                        type= 'text' 
-                        placeholder= 'Max'
-                        onChange = {(e)=>{
-                          setPriceMax(e.target.value)
-                      }}
-                      />
-                    </div>
-                    <button>Go</button>
-                  </form>
-                </div>
-              </div>
+              <FilterByPrice setPriceMin = {setPriceMin} setPriceMax = {setPriceMax} filterByPrice = {filterByPrice}/>
               <div >
-                  {/* //products after slider */}
+
                   {products && products.map(product => (
               <Product key = {product._id} product = {product}/>
              )) }
@@ -95,7 +70,7 @@ const Home = ({match}) => {
 
         </div>
  
-        {/* <div className = 'pagination'> */}
+
             <Pagination
               activePage={currentPage}
               itemsCountPerPage={resultsPerPage}

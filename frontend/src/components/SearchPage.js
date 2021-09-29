@@ -3,10 +3,11 @@ import React from 'react';
 
 
 import FilterByPrice from './productFilters/FilterByPrice';
+import FilterByCategory from './productFilters/FilterByCategory';
 import Product from './product/Product';
 
 
-const SearchPage = ({products, filterByPrice, searchkeyword, countTotal, setPriceMax, setPriceMin}) => {
+const SearchPage = ({products, filterByPrice, searchkeyword, countTotal, setPriceMax, setPriceMin, setCategory}) => {
 
 
   return (
@@ -15,7 +16,8 @@ const SearchPage = ({products, filterByPrice, searchkeyword, countTotal, setPric
     <div className = 'content-container'>
       <div className = 'filter-section-left'>
         <FilterByPrice setPriceMin = {setPriceMin} setPriceMax = {setPriceMax} filterByPrice = {filterByPrice}/>
-
+        <hr/>
+        <FilterByCategory setCategory = {setCategory}/>
       </div>
       <div className ='product-content-right'>
         {products && products.map(product => (

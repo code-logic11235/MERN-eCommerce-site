@@ -5,6 +5,7 @@ const FilterByPrice = ({setPriceMin,setPriceMax,filterByPrice}) => {
 
   return (
     <div className = 'filter-price'>
+      Price
       <form onSubmit = {filterByPrice}>
         <div className = 'price-range low-price '> 
           <span>$</span>

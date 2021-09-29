@@ -19,14 +19,16 @@ import { useAlert } from 'react-alert';
 
 
 const Home = ({match}) => {
-
+  const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1)  //for pagination
 
   const [priceMin, setPriceMin] = useState(1); //for price filter
   const [priceMax, setPriceMax] = useState(1000); //for price filter
+  const [category, setCategory] = useState('');
+
   const alert = useAlert();
 
-  const dispatch = useDispatch();
+
 
   const {loading, products, error, countTotal, resultsPerPage} = useSelector(state=> state.products) //pulling state from redux
   const searchkeyword = match.params.keyword //params from searchbar
@@ -36,8 +38,8 @@ const Home = ({match}) => {
     if(error) {
       return alert.error(error)
     }
-    dispatch(getProduct(searchkeyword ,currentPage, priceMin, priceMax));  
-  }, [dispatch, alert, error, searchkeyword, currentPage])
+    dispatch(getProduct(searchkeyword ,currentPage, priceMin, priceMax, category));  
+  }, [dispatch, alert, error, searchkeyword, currentPage, priceMin, priceMax, category])
 
   function setCurrentPageNo(pageNumber){
     setCurrentPage(pageNumber)
@@ -56,7 +58,8 @@ const Home = ({match}) => {
           countTotal={countTotal} 
           filterByPrice= {filterByPrice} 
           setPriceMin = {setPriceMin}
-          setPriceMax = {setPriceMax}/>
+          setPriceMax = {setPriceMax}
+          setCategory = {setCategory}/>
         ): (
           <>
             <h1 id="products_heading">Latest Products</h1>

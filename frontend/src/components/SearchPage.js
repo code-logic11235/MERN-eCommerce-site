@@ -7,7 +7,9 @@ import FilterByCategory from './productFilters/FilterByCategory';
 import Product from './product/Product';
 
 
-const SearchPage = ({products, filterByPrice, searchkeyword, countTotal, setPriceMax, setPriceMin, setCategory}) => {
+
+  const SearchPage = ({products, searchkeyword, countTotal, setCategory, currentPage}) => {
+
 
 
   return (
@@ -15,7 +17,7 @@ const SearchPage = ({products, filterByPrice, searchkeyword, countTotal, setPric
     <div className='section-spacing'>{`showing ${countTotal > 4 ? countTotal - 4 : countTotal } out of ${countTotal}  for "${searchkeyword}"`} </div>
     <div className = 'content-container'>
       <div className = 'filter-section-left'>
-        <FilterByPrice setPriceMin = {setPriceMin} setPriceMax = {setPriceMax} filterByPrice = {filterByPrice}/>
+        <FilterByPrice  currentPage = {currentPage} searchkeyword = {searchkeyword} />
         <hr/>
         <FilterByCategory setCategory = {setCategory}/>
       </div>

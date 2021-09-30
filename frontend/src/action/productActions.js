@@ -10,19 +10,29 @@ import {
   PRODUCT_DETAILS_FAIL
 } from '../constants/productConstants';
 
-export const getProduct = (searchkeyword = '', currentPage=1, priceMin, priceMax, category) => async (dispatch) => {
+export const getProduct = (searchkeyword = '', currentPage=1, minPrice, maxPrice, category) => async (dispatch) => {
   try {
     dispatch({
       type: ALL_PRODUCTS_REQUEST
     })
-    // price[lte]=${price[1]}&price[gte]=${price[0]} is for slider filter
-    let link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${priceMax}&price[gte]=${priceMin}`
-    
+
+
+    let link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}`
+    if(minPrice && maxPrice) {
+      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}&price[gte]=${minPrice}`
+    }
+    if(minPrice && !maxPrice  ) {
+      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[gte]=${minPrice}`
+    }
+    if(maxPrice && !minPrice){
+      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}`
+    }
+
     if(category){
-      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${priceMax}&price[gte]=${priceMin}&category=${category}`
+      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}&price[gte]=${minPrice}&category=${category}`
     }
     const {data} = await axios.get(link);
-
+    
     dispatch({
       type: ALL_PRODUCTS_SUCCESS,
       payload: data

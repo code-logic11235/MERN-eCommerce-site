@@ -11,6 +11,7 @@ import SearchPage from './SearchPage';
 
 import {useDispatch, useSelector} from 'react-redux';
 import { getProduct } from '../action/productActions';
+import { setPrice } from '../action/filtersAction';
 
 
 import { useAlert } from 'react-alert';
@@ -22,8 +23,6 @@ const Home = ({match}) => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1)  //for pagination
 
-  const [priceMin, setPriceMin] = useState(1); //for price filter
-  const [priceMax, setPriceMax] = useState(1000); //for price filter
   const [category, setCategory] = useState('');
 
   const alert = useAlert();
@@ -32,21 +31,22 @@ const Home = ({match}) => {
 
   const {loading, products, error, countTotal, resultsPerPage} = useSelector(state=> state.products) //pulling state from redux
   const searchkeyword = match.params.keyword //params from searchbar
-
+  // const {minPrice, maxPrice} = useSelector(state => state.priceFilter)
 
   useEffect(() => {
     if(error) {
       return alert.error(error)
     }
-    dispatch(getProduct(searchkeyword ,currentPage, priceMin, priceMax, category));  
-  }, [dispatch, alert, error, searchkeyword, currentPage, priceMin, priceMax, category])
+
+    // console.log(minPrice,maxPrice)
+    dispatch(getProduct(searchkeyword ,currentPage, category));  
+  }, [dispatch, alert, error, searchkeyword, currentPage, category])
 
   function setCurrentPageNo(pageNumber){
     setCurrentPage(pageNumber)
   }
-  function filterByPrice(){
-    dispatch(getProduct(searchkeyword ,currentPage, priceMin, priceMax));  
-  }
+
+
   return (
     <>
     {loading ?  <Loader/>: 
@@ -55,10 +55,11 @@ const Home = ({match}) => {
       {searchkeyword? (
           <SearchPage products = {products} 
           searchkeyword = {searchkeyword} 
-          countTotal={countTotal} 
-          filterByPrice= {filterByPrice} 
-          setPriceMin = {setPriceMin}
-          setPriceMax = {setPriceMax}
+          countTotal={countTotal}
+          currentPage = {currentPage} 
+          
+          // filterByPrice= {filterByPrice} 
+
           setCategory = {setCategory}/>
         ): (
           <>

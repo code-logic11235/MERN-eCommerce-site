@@ -1,11 +1,18 @@
 import React, {useState} from 'react'
+import {useDispatch} from 'react-redux';
+import { resetPrice } from '../../action/filtersAction';
 
 export const Search = ({history}) => {
+  const dispatch = useDispatch();
   const [keyword, setKeyword]  = useState('')
+
+
+
 
   function handleSearch (e){
     e.preventDefault();
 
+    dispatch(resetPrice());  
     if(keyword){
       history.push(`/search/${keyword}`)
     } else {

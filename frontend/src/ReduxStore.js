@@ -4,10 +4,12 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 import { productsReducer, productDetailsReducer } from "./reducer/productReducers";
 import { modalReducer } from "./reducer/modalReducer";
+import { FilterReducer } from "./reducer/filtersReduder";
 const reducer = combineReducers ({
   products: productsReducer,
   productDetails: productDetailsReducer,
-  modal: modalReducer
+  modal: modalReducer,
+  Filters: FilterReducer
 
 
 

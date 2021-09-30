@@ -1,19 +1,33 @@
 import React from 'react'
+import {useDispatch, useSelector} from 'react-redux';
 
-const FilterByPrice = ({setPriceMin,setPriceMax,filterByPrice}) => {
+import { setPrice } from '../../action/filtersAction';
+import { getProduct } from '../../action/productActions';
 
+const FilterByPrice = ({searchkeyword, currentPage}) => {
+  const dispatch = useDispatch();
+  
+
+  let minPrice = '';
+  let maxPrice = ''
+  
+  function onGoPressed (){
+    dispatch(setPrice(minPrice,maxPrice))
+
+    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice))
+  }
 
   return (
     <div className = 'filter-price'>
       Price
-      <form onSubmit = {filterByPrice}>
+      <form onSubmit = {onGoPressed}>
         <div className = 'price-range low-price '> 
           <span>$</span>
           <input 
             type= 'text' 
             placeholder= 'Min' 
             onChange = {(e)=>{
-                setPriceMin(e.target.value)
+                minPrice = e.target.value;
             }}
           />
 
@@ -24,7 +38,7 @@ const FilterByPrice = ({setPriceMin,setPriceMax,filterByPrice}) => {
             type= 'text' 
             placeholder= 'Max'
             onChange = {(e)=>{
-              setPriceMax(e.target.value)
+              maxPrice = e.target.value;
           }}
           />
         </div>

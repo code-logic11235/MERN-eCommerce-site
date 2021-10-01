@@ -11,7 +11,7 @@ import SearchPage from './SearchPage';
 
 import {useDispatch, useSelector} from 'react-redux';
 import { getProduct } from '../action/productActions';
-import { setPrice } from '../action/filtersAction';
+
 
 
 import { useAlert } from 'react-alert';
@@ -23,7 +23,7 @@ const Home = ({match}) => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1)  //for pagination
 
-  const [category, setCategory] = useState('');
+  // const [category, setCategory] = useState('');
 
   const alert = useAlert();
 
@@ -31,16 +31,15 @@ const Home = ({match}) => {
 
   const {loading, products, error, countTotal, resultsPerPage} = useSelector(state=> state.products) //pulling state from redux
   const searchkeyword = match.params.keyword //params from searchbar
-  // const {minPrice, maxPrice} = useSelector(state => state.priceFilter)
 
+  const {category} = useSelector(state => state.filters)
   useEffect(() => {
     if(error) {
       return alert.error(error)
     }
-
-    // console.log(minPrice,maxPrice)
-    dispatch(getProduct(searchkeyword ,currentPage, category));  
-  }, [dispatch, alert, error, searchkeyword, currentPage, category])
+    console.log('>>>>>>useeffect<<<<')
+    dispatch(getProduct(searchkeyword ,currentPage));  
+  }, [ alert, error, searchkeyword, currentPage])
 
   function setCurrentPageNo(pageNumber){
     setCurrentPage(pageNumber)
@@ -58,9 +57,8 @@ const Home = ({match}) => {
           countTotal={countTotal}
           currentPage = {currentPage} 
           
-          // filterByPrice= {filterByPrice} 
 
-          setCategory = {setCategory}/>
+          />
         ): (
           <>
             <h1 id="products_heading">Latest Products</h1>

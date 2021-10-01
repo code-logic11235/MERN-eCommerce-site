@@ -9,7 +9,7 @@ const reducer = combineReducers ({
   products: productsReducer,
   productDetails: productDetailsReducer,
   modal: modalReducer,
-  Filters: FilterReducer
+  filters: FilterReducer
 
 
 

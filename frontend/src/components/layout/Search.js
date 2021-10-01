@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux';
-import { resetPrice } from '../../action/filtersAction';
+import { resetAllFilters } from '../../action/filtersAction';
 
 export const Search = ({history}) => {
   const dispatch = useDispatch();
@@ -12,7 +12,9 @@ export const Search = ({history}) => {
   function handleSearch (e){
     e.preventDefault();
 
-    dispatch(resetPrice());  
+    dispatch(resetAllFilters());
+  
+    
     if(keyword){
       history.push(`/search/${keyword}`)
     } else {

@@ -12,11 +12,7 @@ const FilterByCategory = ({searchkeyword,currentPage}) => {
   const {minPrice, maxPrice} = useSelector(state=> state.filters)
   function handleClick (category){
     dispatch(setCategory(category));
-    // let minPrice =1;
-    // let maxPrice =300;
-    console.log('????????inside filter by category????????')
-    console.log(minPrice, maxPrice)
-    dispatch(getProduct(searchkeyword, currentPage,  minPrice, maxPrice,category))
+    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category))
   }
   const categories = [
     'Electronics', 

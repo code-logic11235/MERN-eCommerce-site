@@ -23,24 +23,43 @@ export const getProduct = (searchkeyword = '', currentPage=1, minPrice, maxPrice
     console.log('category: ', category)
     console.log('-------------')
 
-    let link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}`
+    let link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}`;
 
-    if(minPrice && maxPrice) {
-      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}&price[gte]=${minPrice}`
-    }
-    if(minPrice && !maxPrice  ) {
-      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[gte]=${minPrice}`
-    }
-    if(maxPrice && !minPrice){
-      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}`
-    }
-
-    if(category){
-      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&category=${category}`
+    let minPriceLink = `&price[gte]=${minPrice}`;
+    let maxPriceLink = `&price[lte]=${maxPrice}`;
+    let categoryLink = `&category=${category}`;
+    
+    if(minPrice){
+      link = link.concat(minPriceLink);
+      // console.log(link)
     } 
-    if(category && minPrice && maxPrice) {
-      link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}&price[gte]=${minPrice}&category=${category}`
+    if(maxPrice) {
+      link = link.concat(maxPriceLink);
+    } 
+    // console.log(link)
+    if(category) {
+      link = link.concat(categoryLink);
     }
+    console.log(link)
+    // minprice gets undefined when using pagination link
+    
+
+    // if(minPrice && maxPrice) {
+      //   link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}&price[gte]=${minPrice}`
+    // }
+    // if(minPrice && !maxPrice  ) {
+    //   link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[gte]=${minPrice}`
+    // }
+    // if(maxPrice && !minPrice){
+    //   link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}`
+    // }
+
+    // if(category){
+    //   link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&category=${category}`
+    // } 
+    // if(category && minPrice && maxPrice) {
+    //   link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}&price[lte]=${maxPrice}&price[gte]=${minPrice}&category=${category}`
+    // }
     const {data} = await axios.get(link);
     
     dispatch({

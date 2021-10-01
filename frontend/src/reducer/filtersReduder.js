@@ -1,6 +1,6 @@
 import {
   SET_PRICE,
-  SET_FILTERS,
+  SET_RATING,
   RESET_ALL_FILTERS,
   SET_CATEGORY,
 
@@ -9,7 +9,8 @@ import {
 const initState = {
   minPrice: '',
   maxPrice: '',
-  category: ''
+  category: '',
+  rating: '',
 }
 export const FilterReducer = ( state = initState, action) => {
   switch(action.type) {
@@ -34,7 +35,12 @@ export const FilterReducer = ( state = initState, action) => {
         maxPrice: '',
         category: ''
       }
-  
+    case SET_RATING: 
+      return {
+        ...state,
+        rating: action.payload.rating,
+      }
+
      
     default: 
       return state;

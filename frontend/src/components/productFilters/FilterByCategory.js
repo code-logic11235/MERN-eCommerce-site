@@ -28,7 +28,7 @@ const FilterByCategory = ({searchkeyword,currentPage}) => {
     'Outdoor'
   ];
   return (
-    <div >
+    <div className = 'filter-categories'>
       <h4> Categories</h4>
       <ul>
         {categories.map(category => (

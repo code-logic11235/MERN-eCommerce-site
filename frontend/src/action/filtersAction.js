@@ -1,10 +1,9 @@
 import {
   SET_PRICE,
-  RESET_PRICE,
-  SET_FILTERS,
-  RESET_ALL_FILTERS,
   SET_CATEGORY,
-  RESET_CATEGORY,
+  SET_RATING,
+  RESET_ALL_FILTERS,
+
 } from '../constants/filtersConstant';
 
 
@@ -22,6 +21,14 @@ export const setCategory = (category) => {
     payload: { category: category}
   };
 }
+
+export const setRating = (rating) => {
+  return {
+    type: SET_RATING,
+    payload: { rating: rating}
+  };
+}
+
 
 export const resetAllFilters= () => {
   return {

@@ -211,6 +211,7 @@ padding: 25px;
 }
 
 .star-outer{
+  /* display: flex; */
   position: relative;
   display: inline-block;
 }
@@ -321,9 +322,29 @@ padding: 25px;
   background-color: #febd69;
 }
 
+                                  /* filter by rating */
+.filter-star-outer {
+  position: relative;
+  display: inline-block;
+  pointer-events: none;
+}
+.filter-star-outer + span {
+  pointer-events: none;
+}
 
+.filter-star-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: 'Font Awesome 5 free';
+  font-weight: 200;
+  color: rgb(218, 216, 216);
+}
 
-
+.filter-star-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: 'Font Awesome 5 free';
+  font-weight: 1000; 
+  color: #f8ce0b;
+}
 
 
 

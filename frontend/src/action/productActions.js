@@ -9,18 +9,19 @@ import {
   PRODUCT_DETAILS_FAIL
 } from '../constants/productConstants';
 
-export const getProduct = (searchkeyword = '', currentPage=1, minPrice, maxPrice, category) => async (dispatch) => {
+export const getProduct = (searchkeyword = '', currentPage=1, minPrice, maxPrice, category, rating) => async (dispatch) => {
   try {
     dispatch({
       type: ALL_PRODUCTS_REQUEST
     })
 
     console.log('-------------')
-    console.log('searchkeyword: ', searchkeyword)
-    console.log('currentPage: ', currentPage)
-    console.log('minPrice: ', minPrice)
-    console.log('maxPrice: ', maxPrice)
-    console.log('category: ', category)
+    // console.log('searchkeyword: ', searchkeyword)
+    // console.log('currentPage: ', currentPage)
+    // console.log('minPrice: ', minPrice)
+    // console.log('maxPrice: ', maxPrice)
+    // console.log('category: ', category)
+    console.log('rating lol ',rating)
     console.log('-------------')
 
     let link = `/api/v1/products?keyword=${searchkeyword}&page=${currentPage}`;

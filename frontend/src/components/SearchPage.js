@@ -2,7 +2,7 @@ import React from 'react';
 
 import FilterByPrice from './productFilters/FilterByPrice';
 import FilterByCategory from './productFilters/FilterByCategory';
-
+import FilterByRating from './productFilters/FilterByRating';
 
 
 import Product from './product/Product';
@@ -21,6 +21,7 @@ import Product from './product/Product';
           <FilterByPrice  currentPage = {currentPage} searchkeyword = {searchkeyword} />
           <hr/>
           <FilterByCategory currentPage = {currentPage} searchkeyword = {searchkeyword}/>
+          <FilterByRating currentPage = {currentPage} searchkeyword = {searchkeyword}/>
         </div>
         <div className ='product-content-right'>
           {products && products.map(product => (

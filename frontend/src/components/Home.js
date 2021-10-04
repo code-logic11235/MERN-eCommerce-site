@@ -31,7 +31,7 @@ const Home = ({match}) => {
 
   const {loading, products, error, countTotal, resultsPerPage} = useSelector(state=> state.products) //pulling state from redux
   const searchkeyword = match.params.keyword //params from searchbar
-  const {minPrice, maxPrice, category} = useSelector(state=>state.filters)
+  const {minPrice, maxPrice, category, rating} = useSelector(state=>state.filters)
 
   // const {category} = useSelector(state => state.filters)
   useEffect(() => {
@@ -39,7 +39,7 @@ const Home = ({match}) => {
       return alert.error(error)
     }
     console.log('>>>>>>useeffect<<<<')
-    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category));
+    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category,rating));
   }, [ alert, error, searchkeyword, currentPage])
 
   function setCurrentPageNo(pageNumber){

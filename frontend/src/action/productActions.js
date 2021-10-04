@@ -29,6 +29,7 @@ export const getProduct = (searchkeyword = '', currentPage=1, minPrice, maxPrice
     let minPriceLink = `&price[gte]=${minPrice}`;
     let maxPriceLink = `&price[lte]=${maxPrice}`;
     let categoryLink = `&category=${category}`;
+    let ratingsLink = `&ratings[gte]=${rating}`;
     
     if(minPrice){
       link = link.concat(minPriceLink);
@@ -40,6 +41,9 @@ export const getProduct = (searchkeyword = '', currentPage=1, minPrice, maxPrice
     // console.log(link)
     if(category) {
       link = link.concat(categoryLink);
+    }
+    if(rating){
+      link = link.concat(ratingsLink);
     }
     console.log(link)
     // minprice gets undefined when using pagination link

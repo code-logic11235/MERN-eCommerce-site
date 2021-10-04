@@ -12,8 +12,8 @@ const FilterByRating = ({currentPage, searchkeyword} ) => {
 
   function handleClick(e){
     dispatch(setRating(e.target.dataset.value));
-    console.log('handleclick rating',rating)
-    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category,rating ));
+    console.log('handleclick rating',e.target.dataset.value)   ///ratign out of sync 
+    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category,e.target.dataset.value ));
   }
   return (
     <div className = 'filter-ratings'>

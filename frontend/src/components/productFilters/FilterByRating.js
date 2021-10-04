@@ -6,14 +6,14 @@ import { getProduct } from '../../action/productActions';
 const FilterByRating = ({currentPage, searchkeyword} ) => {
   const dispatch = useDispatch();
 
-  const {minPrice, maxPrice, category, rating} = useSelector(state=>state.filters)
+  const {minPrice, maxPrice, category} = useSelector(state=>state.filters)
 
 
 
   function handleClick(e){
-    dispatch(setRating(e.target.dataset.value));
-    console.log('handleclick rating',e.target.dataset.value)   ///ratign out of sync 
-    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category,e.target.dataset.value ));
+    let rating = e.target.dataset.value;
+    dispatch(setRating(rating));
+    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category, rating ));
   }
   return (
     <div className = 'filter-ratings'>

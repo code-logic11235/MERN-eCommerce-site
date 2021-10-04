@@ -6,7 +6,7 @@ import { getProduct } from '../../action/productActions';
 
 const FilterByPrice = ({searchkeyword, currentPage}) => {
   const dispatch = useDispatch();
-  const {category} = useSelector(state=>state.filters)
+  const {category, rating} = useSelector(state=>state.filters)
 
   let minPrice = '';
   let maxPrice = ''
@@ -14,7 +14,7 @@ const FilterByPrice = ({searchkeyword, currentPage}) => {
   function onGoPressed (){
     dispatch(setPrice(minPrice,maxPrice));
 
-    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category));
+    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category, rating));
 
   }
 

@@ -23,7 +23,6 @@ export const setCategory = (category) => {
 }
 
 export const setRating = (rating) => {
-  console.log('inside rating acting:', rating)
   return {
     type: SET_RATING,
     payload: { rating: rating}

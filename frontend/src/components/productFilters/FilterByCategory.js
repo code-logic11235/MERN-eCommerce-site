@@ -9,10 +9,10 @@ import { getProduct } from '../../action/productActions';
 const FilterByCategory = ({searchkeyword,currentPage}) => {
   const dispatch = useDispatch();
   
-  const {minPrice, maxPrice} = useSelector(state=> state.filters)
+  const {minPrice, maxPrice, rating} = useSelector(state=> state.filters)
   function handleClick (category){
     dispatch(setCategory(category));
-    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category))
+    dispatch(getProduct(searchkeyword, currentPage, minPrice, maxPrice, category, rating))
   }
   const categories = [
     'Electronics', 

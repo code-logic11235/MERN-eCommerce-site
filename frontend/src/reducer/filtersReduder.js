@@ -30,7 +30,6 @@ export const FilterReducer = ( state = initState, action) => {
       }
       
       case SET_RATING: 
-      // console.log('inside rating reducer:', action.payload.rating)
         return {
           ...state,
           rating: action.payload.rating,
@@ -39,7 +38,8 @@ export const FilterReducer = ( state = initState, action) => {
       return {
         minPrice: '',
         maxPrice: '',
-        category: ''
+        category: '',
+        rating: '',
       }
 
      

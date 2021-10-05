@@ -6,6 +6,8 @@ import Home from './components/Home';
 
 import ProductDetails from './components/product/ProductDetails';
 
+import Login from './components/user/Login';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route path = "/" component={Home} exact/>
           <Route path = "/search/:keyword" component={Home} exact/>
           <Route path = "/product/:id" component={ProductDetails} exact/>
+          <Route path = '/login' component = {Login} exact/>
           </div>
         <Footer/>
       </div>

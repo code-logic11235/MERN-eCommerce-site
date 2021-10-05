@@ -1,6 +1,6 @@
 import React from 'react';
 import { Search } from './Search';
-import { Route } from 'react-router-dom';
+import { Route , Link} from 'react-router-dom';
 import { Logo } from './Logo';
 
 const Header = () => {
@@ -15,10 +15,11 @@ const Header = () => {
 
         <div className='nav-tools'>
           
-          <div className= 'nav-sign-in'> Hello, Sign in 
+          <Link to = '/login'className= 'nav-sign-in' > Hello, Sign in 
             <br/>
             <span id='your-account'> Your Account</span> 
-          </div>
+            <span className= 'nav-arrow'> </span>
+          </Link>
             <i className='fas fa-shopping-cart'> 2 </i>
         </div>
       </div>

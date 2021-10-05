@@ -39,8 +39,7 @@ export default function ReviewProductModal() {
             </div>
           </div>
         </div>
-                    
-                  
+       
       </div>
   )
 }

@@ -489,6 +489,7 @@ hr {
   justify-content: center;
   align-items: center;
   -webkit-animation: fadein 1.2s;
+  z-index: 10;
 }
 @keyframes fadein {
   from { opacity: 0; }
@@ -594,4 +595,78 @@ margin: 1.3rem 0 2rem 0;
 .pagination a:-webkit-any-link{
   text-decoration: none;
   color: #fa9c23;
+}
+                                          /* user login */
+.modal-popup-box{
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .7);
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  -webkit-animation: fadein .4s;
+  z-index: 10;
+}
+
+.modal-popup-signin{
+  border-radius: 4px;
+  position: relative;
+  background: whitesmoke;
+  margin-top: -5px;
+  margin-right: 65px;
+  width: 460px;
+  float: right;
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+} 
+.modal-popup-signin:before{
+  content:"";
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  top: -15px;
+  right:93px; 
+  border-width: 8px;
+  border-color: transparent  transparent whitesmoke transparent;
+  border-style: solid;
+  /* z-index: 10000; */
+}
+
+.modal-popup-signin button{
+  height: 33px;
+  width: 165px;
+  font-size: 13px;
+  border: 1px solid;
+  /* border: none; */
+  border-color: #c89411 #b0820f #99710d;
+  background: linear-gradient(to bottom,#f8e3ad,#EEBA37);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 0 #fcf3dc;
+  margin-top: 22px;
+  cursor: pointer;
+
+}
+
+.modal-popup-signin button:hover{
+  background: linear-gradient(to bottom,#fad881,#ebb01d);
+}
+.modal-popup-signin button:active{
+  border: none;
+  background: #e7a602;
+}
+
+.form{
+    display: flex;
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
+  /*  position: relative; */
+}
+.form div{
+  /* position: absolute; */
 }

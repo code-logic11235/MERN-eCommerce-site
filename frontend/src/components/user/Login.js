@@ -39,7 +39,7 @@ const Login = ({history}) => {
     {loading ? <Loader/> : (
       <>
         <MetaData title = {'Login'}/>
-        <form>
+        <form className = 'form'>
           <h1> Login </h1>
           <div class="form-group">
             <label for="email_field">Email</label>

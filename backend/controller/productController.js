@@ -52,7 +52,7 @@ exports.getProducts = catchAsyncErrors (async (req, res, next)=>{
             products,
             resultsPerPage
           })
-    },1500)
+    },800)
     
   }
 )
@@ -76,7 +76,7 @@ exports.getSingleProduct = catchAsyncErrors (async (req, res, next)=>{
       success: true,
       product
     })
-  },1500)
+  },800)
   }
 )
 //update product => /api/v1/admin/product/ :id

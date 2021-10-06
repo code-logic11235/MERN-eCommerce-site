@@ -39,43 +39,46 @@ const Login = ({history}) => {
     {loading ? <Loader/> : (
       <>
         <MetaData title = {'Login'}/>
-        <form className = 'form'>
-          <h1> Login </h1>
-          <div class="form-group">
-            <label for="email_field">Email</label>
-            <input
-              type="email"
-              id="email_field"
-              class="form-control"
-              value=""
-            />
-          </div>
+        <div className = 'login-container'>
+          <form className = 'form'>
+            <h1> Login </h1>
+            <div className="form-group">
+              <label for="email_field">Email</label>
+              <input
+                type="email"
+                id="email_field"
+                className="form-control"
+                value=""
+              />
+            </div>
 
-          <div class="form-group">
-            <label for="password_field">Password</label>
-            <input
-              type="password"
-              id="password_field"
-              class="form-control"
-              value=""
-            />
-          </div>
+            <div className="form-group">
+              <label for="password_field">Password</label>
+              <input
+                type="password"
+                id="password_field"
+                className="form-control"
+                value=""
+              />
+            </div>
 
-          <a href="#" class="float-right mb-4">Forgot Password?</a>
-  
-            <button
-              id="login_button"
-              type="submit"
-              class="btn btn-block py-3"
-            >
-              LOGIN
-            </button>
+            <a href="#" >Forgot Password?</a>
+    
+              <button
+                className="login-submit"
+                type="submit"
+                
+              >
+                LOGIN
+              </button>
 
-            <a href="#" class="float-right mt-3">New User?</a>
+              <a href="#" >New User?</a>
 
 
 
-        </form>
+          </form>
+
+        </div>
       </>
     )}
     </>

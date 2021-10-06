@@ -34,7 +34,7 @@ const Header = () => {
             <span className= 'nav-arrow'> </span>
           </Link>
             <i className='fas fa-shopping-cart'> 2 </i>
-            {modal ? <LoginHoverModal hideModal = {hide}/> : null}
+            {/* {modal ? <LoginHoverModal hideModal = {hide}/> : null} */}
         </div>
       </div>
     </div>

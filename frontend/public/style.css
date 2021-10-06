@@ -5,8 +5,7 @@ body, html {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
-  /* overflow-x: hidden; */
-  /* min-width: 370px; */
+  font-family: Trebuchet MS, sans-serif;
 }
 
 .app{
@@ -659,14 +658,66 @@ margin: 1.3rem 0 2rem 0;
   border: none;
   background: #e7a602;
 }
-
-.form{
-    display: flex;
+.login-container{
+  display: flex;
   justify-content: center;
   align-items: center; 
-  text-align: center;
-  /*  position: relative; */
 }
+
+.form{
+  margin-top: 150px;
+  margin-bottom: 150px;
+  box-shadow: 0 0 35px rgb(211, 211, 211);
+  border-radius: 3px;
+  width: 500px;
+  /* height: 600px; */
+  padding: 60px 60px 20px 60px;
+
+}
+/* .form h1{
+  letter-spacing: .5px;
+} */
 .form div{
   /* position: absolute; */
+  /* text-align: center;
+  justify-content: center;
+  align-items: center;  */
+  
+}
+.form input{
+  width: 100%;
+  /* outline: none; */
+  border: 1px solid #ccc;
+  height: 43px;
+  border-radius: 6px;
+
+}
+.form div label {
+  display: block;
+  margin: 22px 0 5.5px 0;
+  font-weight: bold;
+
+}
+.form a{
+  display: block;
+  float: right;
+  text-decoration: none;
+  color: black;
+  margin-top: 22px;
+  margin-bottom: 22px;
+
+}
+.form a:first-of-type{
+  float: left;
+  color: blue;
+}
+.login-submit{
+width: 100%;
+border-radius: 6px;
+border: none;
+background: #04AA6D;
+height: 66px;
+color: white;
+font-size: 18px;
+cursor: pointer;
 }

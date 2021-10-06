@@ -48,7 +48,7 @@ const Login = ({history}) => {
                 type="email"
                 id="email_field"
                 className="form-control"
-                value=""
+                
               />
             </div>
 
@@ -58,7 +58,7 @@ const Login = ({history}) => {
                 type="password"
                 id="password_field"
                 className="form-control"
-                value=""
+                
               />
             </div>
 

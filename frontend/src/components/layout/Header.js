@@ -28,13 +28,14 @@ const Header = () => {
 
         <div className='nav-tools'>
           
-          <Link to = '/login'className= 'nav-sign-in' onMouseOver= {()=>{ setTimeout(()=>{dispatch(showModal());},500 ) }}> Hello, Sign in 
+          <Link to = '/login' className= 'nav-sign-in' onMouseOver= {()=>{ setTimeout(()=>{dispatch(showModal());},500 ) }}> Hello, Sign in 
             <br/>
             <span id='your-account'> Your Account</span> 
             <span className= 'nav-arrow'> </span>
           </Link>
             <i className='fas fa-shopping-cart'> 2 </i>
-            {/* {modal ? <LoginHoverModal hideModal = {hide}/> : null} */}
+            {/* TODO: uncomment below to get the modal to pop up  */}
+            {/* {modal ? <LoginHoverModal hideModal = {hide}/> : null} */} 
         </div>
       </div>
     </div>

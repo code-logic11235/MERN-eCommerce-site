@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import MetaData from '../layout/MetaData';
 import Loader from '../layout/Loader';
 
-import { link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -24,7 +24,7 @@ const Login = ({history}) => {
 
   useEffect(()=>{
     if(isAuthenticated) {
-      history.pushState('/')
+      history.push('/')
     }
     if(error) {
       alert.error(error);
@@ -33,6 +33,11 @@ const Login = ({history}) => {
     }
   }, [dispatch, alert, isAuthenticated, error, history])
 
+  function submitHandler(e){
+    e.preventDefault();
+    dispatch(login(email,password));
+
+  }
 
   return (
     <>
@@ -40,7 +45,7 @@ const Login = ({history}) => {
       <>
         <MetaData title = {'Login'}/>
         <div className = 'login-container'>
-          <form className = 'form'>
+          <form className = 'form' onSubmit = {(e)=>{submitHandler(e)}}>
             <h1> Login </h1>
             <div className="form-group">
               <label for="email_field">Email</label>
@@ -48,7 +53,8 @@ const Login = ({history}) => {
                 type="email"
                 id="email_field"
                 className="form-control"
-                
+                value= {email}
+                onChange = {(e)=>{setEmail(e.target.value)}}
               />
             </div>
 
@@ -58,21 +64,23 @@ const Login = ({history}) => {
                 type="password"
                 id="password_field"
                 className="form-control"
+                value={password}
+                onChange = {(e)=>{setPassword(e.target.value)}}
                 
               />
             </div>
 
-            <a href="#" >Forgot Password?</a>
+            <Link to="/password/forgot" >Forgot Password?</Link>
     
               <button
                 className="login-submit"
                 type="submit"
-                
+                // onClick = {(e)=>{e.preventDefault(); console.log(password, email)}}
               >
                 LOGIN
               </button>
 
-              <a href="#" >New User?</a>
+              <Link to="/register" >New User?</Link>
 
 
 

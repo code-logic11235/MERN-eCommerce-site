@@ -6,7 +6,10 @@ import { showModal, hideModal } from '../../action/modalActions';
 import LoginHoverModal from '../user/LoginHoverModal';
 
 import {useDispatch, useSelector} from 'react-redux';
+
+
 const Header = () => {
+
   const dispatch = useDispatch();
   const {modal} = useSelector(state=> state.modal);
 
@@ -27,12 +30,15 @@ const Header = () => {
         <Route render={({history})=><Search history ={history}/>}/>
 
         <div className='nav-tools'>
+
           
-          <Link to = '/login' className= 'nav-sign-in' onMouseOver= {()=>{ setTimeout(()=>{dispatch(showModal());},500 ) }}> Hello, Sign in 
-            <br/>
-            <span id='your-account'> Your Account</span> 
-            <span className= 'nav-arrow'> </span>
-          </Link>
+            <Link to = '/login' className= 'nav-sign-in' onMouseOver= {()=>{ setTimeout(()=>{dispatch(showModal());},500 ) }}> Hello, Sign in 
+              <br/>
+              <span id='your-account'> Your Account</span> 
+              <span className= 'nav-arrow'> </span>
+            </Link>
+            
+          
             <i className='fas fa-shopping-cart'> 2 </i>
             {/* TODO: uncomment below to get the modal to pop up  */}
             {/* {modal ? <LoginHoverModal hideModal = {hide}/> : null} */} 
